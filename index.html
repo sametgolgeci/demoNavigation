@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Tutorial Demo</title>
+  <link href='https://rawgit.com/Reklino/gromlicons/master/style.css' rel='stylesheet' type='text/css'><!-- Arrows -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app='app' ng-controller='MainController'>
+  <main id='main'>
+    <section id='one'>
+      <div class='pane' ng-repeat='image in images track by $index' ng-if="$index == active">
+          <main>
+              <h1 ng-style="{'background-image' : 'url(' + image.img + ')'}">{{ image.name }}</h1>
+          </main>
+          <div class="bg" ng-style="{'background-image' : 'url(' + image.img + ')'}"></div>
+      </div>
+    </section>
+  </main>
+  <nav id='nav'>
+    <ul>
+      <li class="previous" ng-show="active > 0">
+        <a href='#' ng-click="previous()">
+          <span class='icon icon_arrow-left'></span>
+        </a>
+      </li>
+      <li class='numbers'>
+        <a href='#' ng-repeat="image in images track by $index" ng-click="setActive($index)" ng-class="{'active' : $index == active}">●</a>
+      </li>
+      <li class="next" ng-show="active + 1 < images.length">
+        <a href='#' ng-click="next()">
+          <span class='icon icon_arrow-right'></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+    <div id="preloader">
+        <img src="img/02-LOAE-S.jpg" alt="" />
+        <img src="img/03-REYYAN-A.jpg" alt="" />
+        <img src="img/04-RAWAA-H.jpg" alt="" />
+        <img src="img/05-ZAINA-M.jpg" alt="" />
+    </div>
+</body>
+<script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js'></script>
+<script src='https://cdn.rawgit.com/chieffancypants/angular-hotkeys/master/build/hotkeys.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular-animate.js'></script>
+<script src="js/index.js"></script>
+</html>
